@@ -1,0 +1,20 @@
+{
+  "permissions": {
+    "allow": [
+      "PowerShell(npm install --prefix \"c:\\\\Users\\\\puffy\\\\Dropbox\\\\Education\\\\Udemy\\\\Web\\\\ai\\\\project_Hundred\\\\sec_04\\\\chat_app\\\\frontend\")",
+      "PowerShell(npm install --legacy-peer-deps --prefix \"c:\\\\Users\\\\puffy\\\\Dropbox\\\\Education\\\\Udemy\\\\Web\\\\ai\\\\project_Hundred\\\\sec_04\\\\chat_app\\\\frontend\")",
+      "PowerShell(Start-Sleep -Seconds 3; try { $body = @{ email = 'jordanalvarez92@gmail.com'; password = 'A9f3kL2xQ7' } | ConvertTo-Json; $response = Invoke-WebRequest -Uri 'http://localhost:5001/api/auth/login' -Method POST -Body $body -ContentType 'application/json' -UseBasicParsing; Write-Output \"Status: $\\($response.StatusCode\\)\"; Write-Output \"Body: $\\($response.Content\\)\" } catch { Write-Output \"Error: $\\($_.Exception.Message\\)\"; if \\($_.Exception.Response\\) { $reader = [System.IO.StreamReader]::new\\($_.Exception.Response.GetResponseStream\\(\\)\\); Write-Output \"Response: $\\($reader.ReadToEnd\\(\\)\\)\"; $reader.Close\\(\\) } })",
+      "PowerShell(Get-NetTCPConnection -LocalPort 5001 -ErrorAction SilentlyContinue)",
+      "Bash(node src/index.js)",
+      "PowerShell($conn = Get-NetTCPConnection -LocalPort 5001 -State Listen -ErrorAction SilentlyContinue; if \\($conn\\) { $pid = $conn.OwningProcess; Write-Output \"Killing PID $pid\"; Stop-Process -Id $pid -Force } else { netstat -ano | Select-String \":5001\" })",
+      "PowerShell(Stop-Process -Id 25452 -Force -ErrorAction SilentlyContinue)",
+      "PowerShell($p = \\(Get-NetTCPConnection -LocalPort 5001 -State Listen\\).OwningProcess; Stop-Process -Id $p -Force; Start-Sleep -Seconds 2; Get-NetTCPConnection -LocalPort 5001 -State Listen -ErrorAction SilentlyContinue)",
+      "PowerShell(Get-NetTCPConnection -LocalPort 5001 -State Listen -ErrorAction SilentlyContinue)",
+      "WebSearch",
+      "Bash(Get-ChildItem -Path \"c:\\\\Users\\\\puffy\\\\Dropbox\\\\Education\\\\Udemy\\\\Web\\\\ai\\\\project_Hundred\\\\sec_04\\\\chat_app\" -Recurse -Directory)",
+      "Bash(Select-Object -First 20 FullName)",
+      "Bash(git init *)",
+      "Bash(git add *)"
+    ]
+  }
+}
