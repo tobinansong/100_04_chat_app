@@ -4,13 +4,7 @@ import { useChatStore } from '../store/useChatStore';
 import { useAuthStore } from '../store/useAuthStore';
 import ChatHeader from './ChatHeader';
 import MessageInput from './MessageInput';
-
-const formatTime = (timestamp) => {
-  return new Date(timestamp).toLocaleTimeString('en-US', {
-    hour: '2-digit',
-    minute: '2-digit',
-  });
-};
+import { formatMessageTime } from '../lib/utils';
 
 const ChatContainer = () => {
   const { messages, getMessages, isMessagesLoading, selectedUser, subscribeToMessages, unsubscribeFromMessages } = useChatStore();
@@ -61,7 +55,7 @@ const ChatContainer = () => {
                   </div>
                 </div>
                 <div className="chat-header">
-                  <time className="text-xs text-base-content/40">{formatTime(message.timestamp)}</time>
+                  <time className="text-xs text-base-content/40">{formatMessageTime(message.timestamp)}</time>
                 </div>
                 <div className={`chat-bubble ${isMine ? 'chat-bubble-primary' : ''}`}>
                   {message.image && (

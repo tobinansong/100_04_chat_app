@@ -1,21 +1,19 @@
 import { useState } from 'react';
 import { Camera, Mail, User, AtSign } from 'lucide-react';
 import { useAuthStore } from '../store/useAuthStore';
+import { resizeImage } from '../lib/utils';
 
 const ProfilePage = () => {
   const { authUser, updateProfile, isUpdatingProfile } = useAuthStore();
   const [selectedImage, setSelectedImage] = useState(null);
 
-  const handleImageUpload = (e) => {
+  const handleImageUpload = async (e) => {
     const file = e.target.files[0];
     if (!file) return;
 
-    const reader = new FileReader();
-    reader.onload = () => {
-      setSelectedImage(reader.result);
-      updateProfile({ profilePicture: reader.result });
-    };
-    reader.readAsDataURL(file);
+    const resized = await resizeImage(file, 500, 0.8);
+    setSelectedImage(resized);
+    updateProfile({ profilePicture: resized });
   };
 
   return (
