@@ -9,8 +9,7 @@ import { app, server } from "./lib/socket.js";
 
 import path from 'path';
 
-const __dirname = path.dirname(new URL(import.meta.url).pathname);
-app.use(express.static(path.join(__dirname, 'public')));
+const __dirname = path.resolve();
 
 dotenv.config();
 
@@ -23,11 +22,11 @@ app.use("/api/messages", messageRoutes);
 
 const PORT = process.env.PORT || 5001;
 
-if(process.env.NODE_ENV === 'production') {
-  app.use(express.static(path.join(__dirname, 'public')));  
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static(path.join(__dirname, 'frontend', 'dist')));
 
   app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'index.html'));
+    res.sendFile(path.join(__dirname, 'frontend', 'dist', 'index.html'));
   });
 }
 
